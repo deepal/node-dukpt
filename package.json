@@ -1,0 +1,25 @@
+{
+  "name": "dukpt",
+  "version": "1.0.0",
+  "description": "Node Library to provide Derived Unique Key Per Transaction (DUKPT) Encryption",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpjayasekara/node-dukpt.git"
+  },
+  "keywords": [
+    "dukpt",
+    "encryption",
+    "security",
+    "payments"
+  ],
+  "author": "Deepal Jayasekara <dpjayasekara@gmail.com> (http://insiderattack.blogspot.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dpjayasekara/node-dukpt/issues"
+  },
+  "homepage": "https://github.com/dpjayasekara/node-dukpt#readme"
+}
