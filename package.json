@@ -2,7 +2,7 @@
   "name": "dukpt",
   "version": "1.0.0",
   "description": "Node Library to provide Derived Unique Key Per Transaction (DUKPT) Encryption",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "gulp test"
   },
@@ -16,10 +16,24 @@
     "security",
     "payments"
   ],
-  "author": "Deepal Jayasekara <dpjayasekara@gmail.com> (http://insiderattack.blogspot.com)",
+  "author": "Deepal Jayasekara <dpjayasekara@gmail.com> (https://jsbloginsiderattack.net)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dpjayasekara/node-dukpt/issues"
   },
-  "homepage": "https://github.com/dpjayasekara/node-dukpt#readme"
+  "homepage": "https://github.com/dpjayasekara/node-dukpt#readme",
+  "devDependencies": {
+    "babel-cli": "6.18.0",
+    "eslint": "3.13.0",
+    "eslint-config-airbnb": "13.0.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.8.0",
+    "should": "11.1.2",
+    "gulp": "3.9.1",
+    "gulp-eslint": "3.0.1",
+    "babel-preset-es2015": "6.18.0"
+  },
+  "dependencies": {
+  }
 }
