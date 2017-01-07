@@ -31,4 +31,6 @@ gulp.task('lint', lint);
 gulp.task('pretest', pretest);
 gulp.task('test', ['pretest'], test);
 gulp.task('watch', watch);
+
+gulp.task('default', ['test']);
 //# sourceMappingURL=gulpfile.js.map
