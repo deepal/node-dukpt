@@ -31,6 +31,7 @@
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.8.0",
     "gulp": "3.9.1",
+    "gulp-coveralls": "0.1.4",
     "gulp-eslint": "3.0.1",
     "gulp-istanbul": "1.1.1",
     "gulp-mocha": "3.0.1",

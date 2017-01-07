@@ -1,0 +1,33 @@
+{
+  "extends": "eslint-config-airbnb",
+  "globals": {
+    "Buffer": true,
+    "global": true,
+    "__dirname": true,
+    "process": true,
+    "it": true,
+    "module": true,
+    "describe": true,
+    "require": true
+  },
+  "rules": {
+    "indent": [
+      "error",
+      4
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
+    "no-underscore-dangle": 0,
+    "no-bitwise": 0
+  }
+}

@@ -232,6 +232,17 @@ var Dukpt = function () {
                 return DataOperations.removeNullCharsFromAscii(decryptedOutput);
             }
 
+            switch (options.outputEncoding.toLowerCase()) {
+                case 'ascii':
+                    // do nothing
+                    break;
+                case 'hex':
+                    decryptedOutput = DataOperations.dataToHexstring(decryptedOutput);
+                    break;
+                default:
+                    throw new Error('unsupported output encoding for dukpt decrypt');
+            }
+
             return decryptedOutput;
         }
     }, {

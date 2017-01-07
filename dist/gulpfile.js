@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
+var coveralls = require('gulp-coveralls');
 
 function lint() {
     return gulp.src(['./index.js', './lib/*.js']).pipe(eslint()).pipe(eslint.format()).pipe(eslint.failOnError());
@@ -14,13 +15,14 @@ function pretest() {
 }
 
 function test() {
-    return gulp.src(['./test/**/*.js'], { read: false }).pipe(mocha()).pipe(istanbul.writeReports({
+    gulp.src(['./test/**/*.js'], { read: false }).pipe(mocha()).pipe(istanbul.writeReports({
         dir: 'test-coverage/',
         reportOpts: {
             dir: 'test-coverage/'
         },
         reporters: ['lcov', 'text', 'text-summary', 'cobertura']
     })).pipe(istanbul.enforceThresholds({ thresholds: { global: 1 } }));
+    return gulp.src('test-coverage/lcov.info').pipe(coveralls());
 }
 
 function watch() {
