@@ -2,6 +2,4 @@ node_modules
 .idea
 test-coverage
 .coveralls.yml
-.travis.yml
-.eslintrc
-.eslintignore
+test.js
