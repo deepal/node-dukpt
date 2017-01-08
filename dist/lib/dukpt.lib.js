@@ -49,7 +49,7 @@ var Dukpt = function () {
                 throw new Error('either IPEK or data params not provided');
             }
 
-            return this._createDataKeyHex(ipek, data);
+            return this._createDataKeyHex(ipek, ksn);
         }
     }, {
         key: '_createDataKeyHex',
@@ -153,11 +153,12 @@ var Dukpt = function () {
             }
 
             var key = this._sessionKey.replace(/\s/g, ""); // remove spaces
-            data = data.replace(/\s/g, "");
 
             if (!key || !data) {
-                return new Error('either session key or data not provided');
+                throw new Error('either session key or data not provided');
             }
+
+            data = data.replace(/\s/g, "");
 
             if (key.length == 32 && options.encryptionMode != "AES") {
                 key = this._EDE3KeyExpand(key);
@@ -166,9 +167,6 @@ var Dukpt = function () {
             switch (options.encryptionMode.toUpperCase()) {
                 case '3DES':
                     encryptedOutput = this.encryptTDES(key, data, true);
-                    break;
-                case 'AES':
-                    encryptedOutput = this.encryptAES(key, data, true);
                     break;
                 default:
                     throw new Error('unsupported dukpt encryption method');
@@ -202,11 +200,12 @@ var Dukpt = function () {
             var options = Object.assign({}, _defaultOptions, decryptOptions);
 
             var key = this._sessionKey.replace(/\s/g, ""); // remove spaces
-            encryptedData = encryptedData.replace(/\s/g, "");
 
             if (!key || !encryptedData) {
-                return new Error('either session key or data not provided');
+                throw new Error('either session key or data not provided');
             }
+
+            encryptedData = encryptedData.replace(/\s/g, "");
 
             if (key.length == 32 && options.decryptionMode != "AES") {
                 key = this._EDE3KeyExpand(key);
@@ -215,9 +214,6 @@ var Dukpt = function () {
             switch (options.decryptionMode.toUpperCase()) {
                 case '3DES':
                     decryptedOutput = this.encryptTDES(key, encryptedData, false);
-                    break;
-                case 'AES':
-                    decryptedOutput = this.encryptAES(key, encryptedData, false);
                     break;
                 default:
                     throw new Error('unsupported dukpt decryption method');

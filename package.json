@@ -36,7 +36,8 @@
     "gulp-istanbul": "1.1.1",
     "gulp-mocha": "3.0.1",
     "randexp": "0.4.4",
-    "should": "11.1.2"
+    "should": "11.1.2",
+    "sinon": "1.17.7"
   },
   "dependencies": {}
 }

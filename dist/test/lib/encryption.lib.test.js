@@ -30,30 +30,4 @@ describe('aes encryption test suite', function () {
         done();
     });
 });
-
-describe('3des encryption test suite', function () {
-    it('should decrypt properly when encrypted string is provided', function (done) {
-        var randomString = generateRandomString();
-        var key = crypto.createHash('sha256').update(randomString).digest();
-        var encrypted = Encryption.encryptAES(key, Buffer.from(randomString, 'ascii').toString('hex'));
-        var decrypted = Encryption.decryptAES(key, encrypted);
-        /^[a-fA-F0-9]+$/.test(decrypted).should.be.true();
-        Buffer.from(decrypted, 'hex').toString('ascii').should.equal(randomString);
-        done();
-    });
-
-    it('should throw an error when a key with incorrect length is provided for decryption', function (done) {
-        var randomString = generateRandomString();
-        var key = crypto.createHash('sha256').update(randomString).digest();
-        var decryptKey = crypto.createHash('sha512').update(randomString).digest();
-        var encrypted = Encryption.encryptAES(key, Buffer.from(randomString, 'ascii').toString('hex'));
-        try {
-            var decrypted = Encryption.decryptAES(decryptKey, encrypted);
-        } catch (err) {
-            should.exist(err);
-            err.message.should.equal('key for AES encryption must be 32 bytes in length');
-        }
-        done();
-    });
-});
 //# sourceMappingURL=encryption.lib.test.js.map
