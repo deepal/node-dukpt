@@ -108,11 +108,6 @@ var Dukpt = function () {
             return DataOperations.XORdataHex(variantMask, derivedPEK); // apply mask
         }
     }, {
-        key: 'encryptAES',
-        value: function encryptAES(key, data, encrypt) {
-            throw new Error('not implemented yet!');
-        }
-    }, {
         key: 'encryptTDES',
         value: function encryptTDES(key, data, encryptTrueFalse) {
 
