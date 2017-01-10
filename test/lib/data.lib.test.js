@@ -20,11 +20,11 @@ function getRandomNumericArray(largestNumber) {
 function getRandomStringArray(addEmptyElements) {
     const result = [];
 
-    const randomIndex = Math.round(Math.random() * 10);
+    const randomIndex = Math.round(Math.random() * 9);
 
     for(let i=0; i< 10; i++){
         if (i===randomIndex && addEmptyElements){
-            result.push("");
+            result.push('');
         }
         else{
             result.push(getRandomString());

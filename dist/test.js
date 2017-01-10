@@ -1,7 +1,0 @@
-'use strict';
-
-var enc = require('./lib/encryption.lib');
-
-console.log(enc.encryptAES('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', '636174'));
-console.log(enc.decryptAES('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', '91f19c3c243ad5b846c745d4c5570304'));
-//# sourceMappingURL=test.js.map

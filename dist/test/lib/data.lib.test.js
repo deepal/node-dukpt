@@ -24,11 +24,11 @@ function getRandomNumericArray(largestNumber) {
 function getRandomStringArray(addEmptyElements) {
     var result = [];
 
-    var randomIndex = Math.round(Math.random() * 10);
+    var randomIndex = Math.round(Math.random() * 9);
 
     for (var i = 0; i < 10; i++) {
         if (i === randomIndex && addEmptyElements) {
-            result.push("");
+            result.push('');
         } else {
             result.push(getRandomString());
         }

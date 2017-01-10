@@ -16,7 +16,7 @@
     "security",
     "payments"
   ],
-  "author": "Deepal Jayasekara <dpjayasekara@gmail.com> (https://jsbloginsiderattack.net)",
+  "author": "Deepal Jayasekara <dpjayasekara@gmail.com> (https://jsblog.insiderattack.net)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dpjayasekara/node-dukpt/issues"

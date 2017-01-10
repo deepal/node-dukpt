@@ -5,6 +5,7 @@
 
 [![GitHub stars](https://img.shields.io/github/stars/dpjayasekara/node-dukpt.svg?style=social&label=Star)](https://github.com/dpjayasekara/node-dukpt) [![GitHub followers](https://img.shields.io/github/followers/dpjayasekara.svg?style=social&label=Follow)](https://github.com/dpjayasekara/node-dukpt)
 
+![alt dukpt](https://photos-6.dropbox.com/t/2/AAAnEQPwUW9VBBmsoE6blpQjJXVVk0ZcOxVo5RZ0j85B3A/12/138677384/png/32x32/3/1484074800/0/2/cooltext225256742189764.png/EOaen2oY8hggAigC/baQpNBKqjrDscxdVzeFjhnBhHKR9m_4vWPJGf6gFWvM?size_mode=3&dl=0&size=2048x1536)
 
 ##Derived Unique Key Per Transaction (DUKPT) Encryption with NodeJS
 
