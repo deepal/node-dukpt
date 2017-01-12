@@ -2,11 +2,6 @@
 
 [![npm version](https://badge.fury.io/js/dukpt.svg)](https://badge.fury.io/js/dukpt) ![alt downloads](https://img.shields.io/npm/dm/dukpt.svg?style=flat-square) [![Build Status](https://travis-ci.org/dpjayasekara/node-dukpt.svg?branch=master)](https://travis-ci.org/dpjayasekara/node-dukpt) ![alt dependencies](https://david-dm.org/dpjayasekara/node-dukpt.svg) ![alt dev-dependencies](https://david-dm.org/dpjayasekara/node-dukpt/dev-status.svg) [![Coverage Status](https://coveralls.io/repos/github/dpjayasekara/node-dukpt/badge.svg)](https://coveralls.io/github/dpjayasekara/node-dukpt)
 
-
-[![GitHub stars](https://img.shields.io/github/stars/dpjayasekara/node-dukpt.svg?style=social&label=Star)](https://github.com/dpjayasekara/node-dukpt) [![GitHub followers](https://img.shields.io/github/followers/dpjayasekara.svg?style=social&label=Follow)](https://github.com/dpjayasekara/node-dukpt)
-
-![alt dukpt](https://photos-6.dropbox.com/t/2/AAAnEQPwUW9VBBmsoE6blpQjJXVVk0ZcOxVo5RZ0j85B3A/12/138677384/png/32x32/3/1484074800/0/2/cooltext225256742189764.png/EOaen2oY8hggAigC/baQpNBKqjrDscxdVzeFjhnBhHKR9m_4vWPJGf6gFWvM?size_mode=3&dl=0&size=2048x1536)
-
 ##Derived Unique Key Per Transaction (DUKPT) Encryption with NodeJS
 
 This the NodeJS implementation of DUKPT based on the vanilla javascript implementation of **IDTech** DUKPT encryption/decryption. Don't hesitate to report any bugs in the [Github Repository!](https://github.com/dpjayasekara/node-dukpt).
