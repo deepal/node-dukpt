@@ -238,19 +238,12 @@ describe('internal methods test suite', function () {
         dukpt = null;
     });
 
-    it('should return same value when ksn "0000FFFFFFFFFFE00000" is masked with _getMaskedKSN', function (done) {
-        var ksn = '0000FFFFFFFFFFE00000';
-        var maskedKSN = dukpt._getMaskedKSN(ksn);
-        Buffer.from(maskedKSN, 'ascii').toString('hex').toUpperCase().should.equal(ksn);
-        done();
-    });
-
     it('should generate dukpt session key provided ipek and ksn', function (done) {
-        var stub = sinon.stub(dukpt, '_createDataKeyHex', function () {
+        var stub = sinon.stub(Dukpt, '_createDataKeyHex', function () {
             return '123';
         });
 
-        var dukptSessKey = dukpt.generateDukptSessionKey(getRandomHexText(), getRandomHexText());
+        var dukptSessKey = Dukpt.generateDukptSessionKey(getRandomHexText(), getRandomHexText());
 
         dukptSessKey.should.equal('123');
         stub.restore();
@@ -258,18 +251,18 @@ describe('internal methods test suite', function () {
     });
 
     it('should throw an error when either ipek or ksn is not provided for generateDukptSessionKey', function (done) {
-        var stub = sinon.stub(dukpt, '_createDataKeyHex', function () {
+        var stub = sinon.stub(Dukpt, '_createDataKeyHex', function () {
             return '123';
         });
         try {
-            dukpt.generateDukptSessionKey('', getRandomHexText());
+            Dukpt.generateDukptSessionKey('', getRandomHexText());
         } catch (err) {
             should.exist(err);
             err.message.should.equal('either IPEK or data params not provided');
         }
 
         try {
-            dukpt.generateDukptSessionKey(getRandomHexText(), '');
+            Dukpt.generateDukptSessionKey(getRandomHexText(), '');
         } catch (err) {
             should.exist(err);
             err.message.should.equal('either IPEK or data params not provided');

@@ -12,11 +12,12 @@ var DataOperations = function () {
     _createClass(DataOperations, null, [{
         key: 'fieldEmpty',
         value: function fieldEmpty(fieldArray) {
-
             for (var i = 0; i < fieldArray.length; i++) {
-                if (fieldArray[i] == "") // empty
+                if (fieldArray[i] === '') {
                     return true;
-            }return false;
+                }
+            }
+            return false;
         }
     }, {
         key: 'getPads',
@@ -41,51 +42,54 @@ var DataOperations = function () {
     }, {
         key: 'numericArrayToHexstring',
         value: function numericArrayToHexstring(ba) {
-
-            var st = "";
+            var st = '';
             for (var i = 0; i < ba.length; i++) {
                 var item = ba[i];
                 var hex = item.toString(16);
-                if (hex.length < 2) hex = "0" + hex;
+                if (hex.length < 2) hex = '0' + hex;
                 st += hex;
             }
             return st;
         }
     }, {
         key: 'hexstringToData',
-        value: function hexstringToData(hex) {
-
-            hex = hex.replace(/\s/g, ""); // eliminate spaces
+        value: function hexstringToData(hexString) {
+            var hex = hexString;
+            hex = hex.replace(/\s/g, ''); // eliminate spaces
 
             var keyar = hex.match(/../g); // break into array of doublets
 
-            var s = ""; // holder for our return value
+            var s = ''; // holder for our return value
 
             for (var i = 0; i < keyar.length; i++) {
-                s += String.fromCharCode(Number("0x" + keyar[i]));
-            }return s;
+                s += String.fromCharCode(Number('0x' + keyar[i]));
+            }
+
+            return s;
         }
     }, {
         key: 'hexstringToNumericArray',
-        value: function hexstringToNumericArray(hex) {
-
-            hex = hex.replace(/\s/g, ""); // eliminate spaces
+        value: function hexstringToNumericArray(hexString) {
+            var hex = hexString;
+            hex = hex.replace(/\s/g, ''); // eliminate spaces
 
             var keyar = hex.match(/../g); // break into array of doublets
 
             var s = []; // holder for our return value
 
             for (var i = 0; i < keyar.length; i++) {
-                s.push(Number("0x" + keyar[i]));
-            }return s;
+                s.push(Number('0x' + keyar[i]));
+            }
+
+            return s;
         }
     }, {
         key: 'dataToHexstring',
         value: function dataToHexstring(d) {
-            var hex = "";
+            var hex = '';
             for (var i = 0; i < d.length; i++) {
                 var h = d.charCodeAt(i).toString(16);
-                if (h.length < 2) h = "0" + h;
+                if (h.length < 2) h = '0' + h;
                 hex += h;
             }
             return hex.toUpperCase();
@@ -93,25 +97,24 @@ var DataOperations = function () {
     }, {
         key: 'XORdata',
         value: function XORdata(data1, data2) {
-
-            if (data1.length < data2.length) {
-
-                while (data1.length < data2.length) {
-                    data1 = "\0" + data1;
+            var d1 = data1;
+            var d2 = data2;
+            if (d1.length < d2.length) {
+                while (d1.length < d2.length) {
+                    d1 = '\0' + d1;
                 } // prepend with nulls
             }
 
-            if (data1.length > data2.length) {
-
-                while (data1.length > data2.length) {
-                    data2 = "\0" + data2;
+            if (d1.length > d2.length) {
+                while (d1.length > d2.length) {
+                    d2 = '\0' + d2;
                 } // prepend with nulls
             }
 
-            var output = "";
+            var output = '';
 
-            for (var i = 0; i < data1.length; i++) {
-                var result = data1.charCodeAt(i) ^ data2.charCodeAt(i);
+            for (var i = 0; i < d1.length; i++) {
+                var result = d1.charCodeAt(i) ^ d2.charCodeAt(i);
                 output += String.fromCharCode(result);
             }
 
@@ -120,25 +123,22 @@ var DataOperations = function () {
     }, {
         key: 'XORdataHex',
         value: function XORdataHex(d1, d2) {
-
             var data1 = DataOperations.hexstringToData(d1);
             var data2 = DataOperations.hexstringToData(d2);
 
             if (data1.length < data2.length) {
-
                 while (data1.length < data2.length) {
-                    data1 = "\0" + data1;
+                    data1 = '\0' + data1;
                 } // prepend with nulls
             }
 
             if (data1.length > data2.length) {
-
                 while (data1.length > data2.length) {
-                    data2 = "\0" + data2;
+                    data2 = '\0' + data2;
                 } // prepend with nulls
             }
 
-            var output = "";
+            var output = '';
 
             for (var i = 0; i < data1.length; i++) {
                 var result = data1.charCodeAt(i) ^ data2.charCodeAt(i);
@@ -150,25 +150,24 @@ var DataOperations = function () {
     }, {
         key: 'ANDdata',
         value: function ANDdata(data1, data2) {
-
-            if (data1.length < data2.length) {
-
-                while (data1.length < data2.length) {
-                    data1 = "\0" + data1;
+            var d1 = data1;
+            var d2 = data2;
+            if (d1.length < d2.length) {
+                while (d1.length < d2.length) {
+                    d1 = '\0' + d1;
                 } // prepend with nulls
             }
 
-            if (data1.length > data2.length) {
-
-                while (data1.length > data2.length) {
-                    data2 = "\0" + data2;
+            if (d1.length > d2.length) {
+                while (d1.length > d2.length) {
+                    d2 = '\0' + d2;
                 } // prepend with nulls
             }
 
-            var output = "";
+            var output = '';
 
-            for (var i = 0; i < data1.length; i++) {
-                var result = data1.charCodeAt(i) & data2.charCodeAt(i);
+            for (var i = 0; i < d1.length; i++) {
+                var result = d1.charCodeAt(i) & d2.charCodeAt(i);
                 output += String.fromCharCode(result);
             }
 
@@ -176,23 +175,24 @@ var DataOperations = function () {
         }
     }, {
         key: 'hexToText',
-        value: function hexToText(h) {
+        value: function hexToText(hex) {
+            var h = hex;
 
             function isASCII(s) {
                 return s >= 32 && s < 127;
             }
 
-            h = h.replace(/\s/g, ""); // eliminate spaces
+            h = h.replace(/\s/g, ''); // eliminate spaces
 
-            var SPECIAL = "."; //String.fromCharCode(9744);
+            var SPECIAL = '.'; // String.fromCharCode(9744);
             var symbols = h.match(/../g);
             var output = [];
             for (var i = 0; i < symbols.length; i++) {
                 var s = symbols[i];
-                var s_decimal = Number("0x" + s);
-                output.push(isASCII(s_decimal) ? String.fromCharCode(s_decimal) : SPECIAL);
+                var sDecimal = Number('0x' + s);
+                output.push(isASCII(sDecimal) ? String.fromCharCode(sDecimal) : SPECIAL);
             }
-            return output.join("");
+            return output.join('');
         }
     }]);
 

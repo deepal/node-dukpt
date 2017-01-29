@@ -244,17 +244,10 @@ describe('internal methods test suite', () => {
         dukpt = null;
     });
 
-    it('should return same value when ksn "0000FFFFFFFFFFE00000" is masked with _getMaskedKSN', (done) => {
-        const ksn = '0000FFFFFFFFFFE00000';
-        const maskedKSN = dukpt._getMaskedKSN(ksn);
-        (Buffer.from(maskedKSN, 'ascii').toString('hex').toUpperCase()).should.equal(ksn);
-        done();
-    });
-
     it('should generate dukpt session key provided ipek and ksn', (done) => {
-        const stub = sinon.stub(dukpt, '_createDataKeyHex', () => '123');
+        const stub = sinon.stub(Dukpt, '_createDataKeyHex', () => '123');
 
-        const dukptSessKey = dukpt.generateDukptSessionKey(getRandomHexText(), getRandomHexText());
+        const dukptSessKey = Dukpt.generateDukptSessionKey(getRandomHexText(), getRandomHexText());
 
         dukptSessKey.should.equal('123');
         stub.restore();
@@ -262,9 +255,9 @@ describe('internal methods test suite', () => {
     });
 
     it('should throw an error when either ipek or ksn is not provided for generateDukptSessionKey', (done) => {
-        const stub = sinon.stub(dukpt, '_createDataKeyHex', () => '123' );
+        const stub = sinon.stub(Dukpt, '_createDataKeyHex', () => '123' );
         try{
-            dukpt.generateDukptSessionKey('', getRandomHexText());
+            Dukpt.generateDukptSessionKey('', getRandomHexText());
         }
         catch (err){
             should.exist(err);
@@ -272,7 +265,7 @@ describe('internal methods test suite', () => {
         }
 
         try{
-            dukpt.generateDukptSessionKey(getRandomHexText(), '');
+            Dukpt.generateDukptSessionKey(getRandomHexText(), '');
         }
         catch (err){
             should.exist(err);
