@@ -1,6 +1,6 @@
 {
   "name": "dukpt",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Node JS Library for Derived Unique Key Per Transaction (DUKPT) Encryption",
   "main": "dist/index.js",
   "scripts": {
