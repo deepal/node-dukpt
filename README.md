@@ -8,6 +8,8 @@ This the NodeJS implementation of DUKPT based on the vanilla javascript implemen
 
 Don't hesitate to report any bugs in the [Github Repository!](https://github.com/dpjayasekara/node-dukpt). Many thanks to @jamiesoncj for providing resources.
 
+> AES support is currently available only for NodeJS versions 6.x.x or above due to some limitations which will be addressed soon.
+
 ### Installing
 
 ```
@@ -114,7 +116,7 @@ Option | Possible Values | Default Value | Description
 `encryptionMode` (for encryption only) | `3DES`/`AES` | `3DES`/`AES` | Specify encryption scheme for dukpt
 `decryptionMode` (for decryption only) | `3DES`/`AES` | `3DES`/`AES` | Specify decryption scheme for dukpt
 
-* Support for AES encryption/decryption is experimental!
+* Support for AES encryption/decryption is experimental and will only work with NodeJS versions 6.x.x and above!
 
 ###Tests
 Tests can be run using gulp as follows:
@@ -126,6 +128,6 @@ gulp test
 ####Roadmap
 
 - [x] Support for DUKPT Encryption/Decryption with 3DES
-- [x] Support for DUKPT Encryption/Decryption with AES
+- [x] Support for DUKPT Encryption/Decryption with AES (Experimental/Node v6.x.x and above only)
 
 
