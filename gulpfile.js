@@ -3,6 +3,8 @@ const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 const istanbul = require('gulp-istanbul');
 const coveralls = require('gulp-coveralls');
+const path = require('path');
+const fs = require('fs');
 
 function lint() {
     return gulp.src(['./index.js', './lib/*.js'])

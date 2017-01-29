@@ -13,11 +13,11 @@ var Encryption = function () {
 
     _createClass(Encryption, null, [{
         key: 'encryptAES',
-        value: function encryptAES(hexKey, hexData, encryptionAlgorithm) {
+        value: function encryptAES(hexKey, hexData, aesMode) {
 
-            encryptionAlgorithm = encryptionAlgorithm || 'aes-256-cbc';
+            aesMode = aesMode || 'aes-256-cbc';
 
-            var keyBuf = Buffer.from(hexKey, 'hex');
+            var keyBuf = hexKey;
 
             if (keyBuf.length != 32) {
                 throw new Error('key for aes encryption must be 32 bytes in length');
@@ -26,7 +26,7 @@ var Encryption = function () {
             var dataBuf = Buffer.from(hexData, 'hex');
             var iv = Buffer.from('00000000000000000000000000000000', 'hex');
 
-            var cipher = crypto.createCipheriv(encryptionAlgorithm, keyBuf, iv).setAutoPadding(true);
+            var cipher = crypto.createCipheriv(aesMode, keyBuf, iv).setAutoPadding(true);
             var encrypted = cipher.update(dataBuf);
             encrypted += cipher.final('binary');
 
@@ -34,11 +34,11 @@ var Encryption = function () {
         }
     }, {
         key: 'decryptAES',
-        value: function decryptAES(hexKey, encryptedHexData, encryptionAlgorithm) {
+        value: function decryptAES(hexKey, encryptedHexData, aesMode) {
 
-            encryptionAlgorithm = encryptionAlgorithm || 'aes-256-cbc';
+            aesMode = aesMode || 'aes-256-cbc';
 
-            var keyBuf = Buffer.from(hexKey, 'hex');
+            var keyBuf = hexKey;
 
             if (keyBuf.length != 32) {
                 throw new Error('key for AES encryption must be 32 bytes in length');
@@ -47,7 +47,7 @@ var Encryption = function () {
             var dataBuf = Buffer.from(encryptedHexData, 'hex');
             var iv = Buffer.from('00000000000000000000000000000000', 'hex');
 
-            var cipher = crypto.createDecipheriv(encryptionAlgorithm, keyBuf, iv);
+            var cipher = crypto.createDecipheriv(aesMode, keyBuf, iv);
             var decrypted = cipher.update(dataBuf);
             decrypted += cipher.final();
 

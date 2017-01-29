@@ -39,5 +39,7 @@
     "should": "11.1.2",
     "sinon": "1.17.7"
   },
-  "dependencies": {}
+  "dependencies": {
+    "aes-js": "2.1.0"
+  }
 }

@@ -28,6 +28,7 @@
       }
     ],
     "no-underscore-dangle": 0,
-    "no-bitwise": 0
+    "no-bitwise": 0,
+    "max-len": ["error", 200, 2]
   }
 }

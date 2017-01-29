@@ -5,6 +5,8 @@ var eslint = require('gulp-eslint');
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 var coveralls = require('gulp-coveralls');
+var path = require('path');
+var fs = require('fs');
 
 function lint() {
     return gulp.src(['./index.js', './lib/*.js']).pipe(eslint()).pipe(eslint.format()).pipe(eslint.failOnError());
