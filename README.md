@@ -4,9 +4,9 @@
 
 ##Derived Unique Key Per Transaction (DUKPT) Encryption with NodeJS
 
-This the NodeJS implementation of DUKPT based on the vanilla javascript implementation of **IDTech** DUKPT encryption/decryption. Don't hesitate to report any bugs in the [Github Repository!](https://github.com/dpjayasekara/node-dukpt).
+This the NodeJS implementation of DUKPT based on the vanilla javascript implementation of **IDTech** DUKPT encryption/decryption. This module provides Dukpt encryption using either 3DES or AES schemes.
 
-Many thanks to @jamiesoncj for providing resources.
+Don't hesitate to report any bugs in the [Github Repository!](https://github.com/dpjayasekara/node-dukpt). Many thanks to @jamiesoncj for providing resources.
 
 ### Installing
 
@@ -31,16 +31,30 @@ After initializing, you can use `dukptEncrypt` and `dukptDecrypt` methods to enc
 
 #### Encrypting `ascii` data
 
+Using 3DES,
+
 ```
 const options = {
 	inputEncoding: 'ascii', 
 	outputEncoding: 'hex',
 	encryptionMode: '3DES'
 };
-const encryptedCardData = dukpt.dukptEncrypt(plainTextCardData, options);
+const encryptedCardData3Des = dukpt.dukptEncrypt(plainTextCardData, options);
+```
+or with AES,
+
+```
+const options = {
+	inputEncoding: 'ascii', 
+	outputEncoding: 'hex',
+	encryptionMode: 'AES'
+};
+const encryptedCardDataAes = dukpt.dukptEncrypt(plainTextCardData, options);
 ```
 
 #### Encrypting `hex` data
+
+Using 3DES,
 
 ```
 const options = {
@@ -48,7 +62,17 @@ const options = {
 	outputEncoding: 'hex',
 	encryptionMode: '3DES'
 };
-const encryptedCardData = dukpt.dukptEncrypt(plainTextCardData, options);
+const encryptedCardData3Des = dukpt.dukptEncrypt(plainTextCardData, options);
+```
+or using AES,
+
+```
+const options = {
+	inputEncoding: 'hex',
+	outputEncoding: 'hex',
+	encryptionMode: 'AES'
+};
+const encryptedCardDataAes = dukpt.dukptEncrypt(plainTextCardData, options);
 ```
 
 #### Decrypting data with `ascii` output encoding
@@ -74,6 +98,8 @@ const options = {
 const decryptedCardData = dukpt.dukptDecrypt(encryptedCardData, options);
 ```
 
+> Please note that this module does support AES encryption with Dukpt, but its currently experimental. Module's Dukpt Encryption and Decryption using AES has been tested, but this module has not been tested against Dukpt AES encrypted data, encrypted by any other external services. Therefore, using 3DES is recommended for applications which require interoperability (e.g, encrypting/decrypting credit card track data).
+
 ###Options
 
 You can use options object to provide additional options for the DUKPT encryption/decryption. This object is **optional** and, if you don't provide it, encryption/decryption will use the default values shipped with it. 
@@ -85,10 +111,10 @@ Option | Possible Values | Default Value | Description
 `outputEncoding` | `ascii`, `hex` | For encryption `hex`, for decryption `ascii` | Specify output encoding of encryption/decryption
 `inputEncoding` | `ascii`, `hex` | For encryption `ascii`, for decryption `hex` | Specify encoding of the input data for encryption/decryption
 `trimOutput` (for decryption only) | `true`, `false` | `false` | Specify whether to strip out null characters from the decrypted output
-`encryptionMode` (for encryption only) | `3DES` | `3DES` | Specify encryption scheme for dukpt
-`decryptionMode` (for decryption only) | `3DES` | `3DES` | Specify decryption scheme for dukpt
+`encryptionMode` (for encryption only) | `3DES`/`AES` | `3DES`/`AES` | Specify encryption scheme for dukpt
+`decryptionMode` (for decryption only) | `3DES`/`AES` | `3DES`/`AES` | Specify decryption scheme for dukpt
 
-* Support for AES encryption/decryption mode will be added soon!
+* Support for AES encryption/decryption is experimental!
 
 ###Tests
 Tests can be run using gulp as follows:
@@ -100,6 +126,6 @@ gulp test
 ####Roadmap
 
 - [x] Support for DUKPT Encryption/Decryption with 3DES
-- [ ] Support for DUKPT Encryption/Decryption with AES
+- [x] Support for DUKPT Encryption/Decryption with AES
 
 
