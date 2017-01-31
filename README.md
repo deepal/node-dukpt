@@ -6,9 +6,9 @@
 
 This the NodeJS implementation of DUKPT based on the vanilla javascript implementation of **IDTech** DUKPT encryption/decryption. This module provides Dukpt encryption using either 3DES or AES schemes.
 
-Don't hesitate to report any bugs in the [Github Repository!](https://github.com/dpjayasekara/node-dukpt). Many thanks to @jamiesoncj for providing resources.
+> Please note that AES encryption/decryption is currently only supported with NodeJS versions 6.x.x and above due to few limitations which will be addressed soon in a next release.
 
-> AES support is currently available only for NodeJS versions 6.x.x or above due to some limitations which will be addressed soon.
+Don't hesitate to report any bugs in the [Github Repository!](https://github.com/dpjayasekara/node-dukpt). Many thanks to @jamiesoncj for providing resources.
 
 ### Installing
 
@@ -100,8 +100,6 @@ const options = {
 const decryptedCardData = dukpt.dukptDecrypt(encryptedCardData, options);
 ```
 
-> Please note that this module does support AES encryption with Dukpt, but its currently experimental. Module's Dukpt Encryption and Decryption using AES has been tested, but this module has not been tested against Dukpt AES encrypted data, encrypted by any other external services. Therefore, using 3DES is recommended for applications which require interoperability (e.g, encrypting/decrypting credit card track data).
-
 ###Options
 
 You can use options object to provide additional options for the DUKPT encryption/decryption. This object is **optional** and, if you don't provide it, encryption/decryption will use the default values shipped with it. 
@@ -116,8 +114,6 @@ Option | Possible Values | Default Value | Description
 `encryptionMode` (for encryption only) | `3DES`/`AES` | `3DES`/`AES` | Specify encryption scheme for dukpt
 `decryptionMode` (for decryption only) | `3DES`/`AES` | `3DES`/`AES` | Specify decryption scheme for dukpt
 
-* Support for AES encryption/decryption is experimental and will only work with NodeJS versions 6.x.x and above!
-
 ###Tests
 Tests can be run using gulp as follows:
 
@@ -128,6 +124,6 @@ gulp test
 ####Roadmap
 
 - [x] Support for DUKPT Encryption/Decryption with 3DES
-- [x] Support for DUKPT Encryption/Decryption with AES (Experimental/Node v6.x.x and above only)
+- [x] Support for DUKPT Encryption/Decryption with AES (Node v6.x.x and above only)
 
 
