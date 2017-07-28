@@ -1,3 +1,5 @@
+'use strict';
+
 const should = require('should');
 const Dukpt = require('../../index');
 const RandExp = require('randexp');
