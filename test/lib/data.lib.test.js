@@ -1,3 +1,5 @@
+'use strict';
+
 const should = require('should');
 const RandExp = require('randexp');
 const DataOperations = require('../../lib/data.lib');
@@ -128,4 +130,3 @@ describe('data operations test suite', () => {
         done();
     });
 });
-
