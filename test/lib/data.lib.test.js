@@ -1,6 +1,6 @@
 const should = require('should');
 const RandExp = require('randexp');
-const DataOperations = require('../../lib/data.lib');
+const DataOperations = require('../../src/lib/data.lib');
 
 function getRandomString() {
     return new RandExp(/[a-zA-Z0-9]{10,50}/).gen();

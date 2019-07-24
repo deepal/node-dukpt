@@ -1,5 +1,5 @@
 const should = require('should');
-const Dukpt = require('../../index');
+const Dukpt = require('../../src/index.js');
 const RandExp = require('randexp');
 const sinon = require('sinon');
 

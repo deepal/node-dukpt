@@ -5,7 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "gulp test",
-    "build": "npm run test && babel ./lib --out-dir ./dist/lib"
+    "build": "npm run test && babel ./src --out-dir ./dist",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=6.0.0"
   },
   "repository": {
     "type": "git",
@@ -22,15 +26,34 @@
   "bugs": {
     "url": "https://github.com/dpjayasekara/node-dukpt/issues"
   },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "4.9.1"
+          },
+          "modules": "commonjs",
+          "useBuiltIns": false,
+          "debug": true
+        }
+      ]
+    ],
+    "sourceMaps": true,
+    "retainLines": true,
+    "plugins": []
+  },
   "homepage": "https://github.com/dpjayasekara/node-dukpt#readme",
   "devDependencies": {
-    "babel-cli": "6.18.0",
-    "babel-preset-es2015": "6.18.0",
-    "eslint": "3.13.0",
-    "eslint-config-airbnb": "13.0.0",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "2.2.3",
-    "eslint-plugin-react": "6.8.0",
+    "@babel/cli": "7.5.5",
+    "@babel/core": "7.5.5",
+    "@babel/preset-env": "7.5.5",
+    "eslint": "6.1.0",
+    "eslint-config-airbnb": "17.1.1",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.14.3",
     "gulp": "3.9.1",
     "gulp-coveralls": "0.1.4",
     "gulp-eslint": "3.0.1",

@@ -7,14 +7,14 @@ const path = require('path');
 const fs = require('fs');
 
 function lint() {
-    return gulp.src(['./index.js', './lib/*.js'])
+    return gulp.src(['./src/**/*.js'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
 }
 
 function pretest() {
-    return gulp.src(['./index.js', './lib/*.js'])
+    return gulp.src(['./src/**/*.js'])
         .pipe(istanbul({ includeUntested: true }))
         .pipe(istanbul.hookRequire());
 }
@@ -35,7 +35,7 @@ function test() {
 }
 
 function watch() {
-    return gulp.watch(['./index.js', './lib/*.js'], 'test');
+    return gulp.watch(['./src/**/*.js'], 'test');
 }
 
 gulp.task('lint', lint);
