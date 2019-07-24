@@ -22,10 +22,9 @@ Initialize DUKPT by providing BDK and KSN:
 ```
 const Dukpt = require('dukpt');
 
-const encryptionBDK = '0123456789ABCDEFFEDCBA9876543210;
+const encryptionBDK = '0123456789ABCDEFFEDCBA9876543210';
 const ksn = 'FFFF9876543210E00008';
 const keyMode = 'datakey'; // optional: defaults to 'datakey'
-const encryptedCardData = '411D405D7DEDB9D84797F04<redacted_for_brevity>050509277E5F80BE67A2C324900A7E3';
 const plainTextCardData = '%B5452310551227189^DOE/JOHN      ^08043210000000725000000?';
 
 const dukpt = new Dukpt(encryptionBDK, ksn);
