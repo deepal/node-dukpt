@@ -4,7 +4,8 @@
   "description": "Node JS Library for Derived Unique Key Per Transaction (DUKPT) Encryption",
   "main": "dist/index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "npm run test && babel ./lib --out-dir ./dist/lib"
   },
   "repository": {
     "type": "git",
