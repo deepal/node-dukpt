@@ -143,7 +143,7 @@ Option | Possible Values | Default Value | Description
 Tests can be run using gulp as follows:
 
 ```
-gulp test
+npm run test
 ```
 
 #### Roadmap

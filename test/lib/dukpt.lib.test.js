@@ -232,6 +232,20 @@ describe('dukpt decryption tests with hex input encoding and aes encryption mode
     });
 });
 
+describe('dukpt constructor test suite', () => {
+    it('should throw an error if the provided BDK doesn\'t have required length', () => {
+        const bdk = '1234';
+        const ksn = 'FFFF9876543210E00008';
+        should(() => new Dukpt(bdk, ksn)).throw()
+    });
+
+    it('should throw an error if the provided KSN doesn\'t have required length', () => {
+        const bdk = '0123456789ABCDEFFEDCBA9876543210';
+        const ksn = '1234';
+        should(() => new Dukpt(bdk, ksn)).throw()
+    });
+});
+
 describe('internal methods test suite', () => {
 
     beforeEach(() => {

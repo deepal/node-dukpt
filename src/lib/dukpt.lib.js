@@ -13,11 +13,11 @@ class Dukpt {
         const dKSN = this.ksn;
 
         if (DataOperations.fieldEmpty([dBDK, dKSN])) {
-            return new Error('a field is blank');
+            throw new Error('a field is blank');
         }
         if (dBDK.replace(/\s/g, '').length !== 32 ||
             dKSN.replace(/\s/g, '').length !== 20) {
-            return new Error('Key must be 16 bytes long and KSN must be 10 bytes');
+            throw new Error('BDK must be 16 bytes long and KSN must be 10 bytes');
         }
 
         const ipek = Dukpt._createIPEK(dBDK, dKSN); // Always start with IPEK
