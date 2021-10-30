@@ -1,5 +1,4 @@
 node_modules
-.idea
-test-coverage
-test.js
 dist
+coverage
+.nyc_output

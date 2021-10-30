@@ -1,3 +1,4 @@
+require('should')
 describe('main module test suite', () => {
     it('should not throw any error when the module is loaded', (done) => {
         require('../src/index.js');

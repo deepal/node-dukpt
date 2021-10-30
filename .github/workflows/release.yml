@@ -1,0 +1,64 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2  
+  build_node6:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '6.x'
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+  build_node8:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '8.x'
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+  build_node10:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10.x'
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+  build_node12:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+  build_node14:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+  build_node16:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+      - run: npm install
+      - run: npm test
+      - run: npm run build
