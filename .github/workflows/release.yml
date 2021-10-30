@@ -4,33 +4,24 @@ on:
     branches:
       - master
 jobs:
-  build_node12:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [12, 14, 16]
     steps:
       - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
-          node-version: '12.x'
+          node-version: ${{ matrix.node }}
       - run: npm install
       - run: npm test
       - run: npm run build
-  build_node14:
+  audit:
     runs-on: ubuntu-latest
+    needs: build
     steps:
-      - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
-      - run: npm install
-      - run: npm test
-      - run: npm run build
-  build_node16:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2  
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-      - run: npm install
-      - run: npm test
-      - run: npm run build
+          node-version: 16.x
+      - run: npm audit --audit-level=moderate
