@@ -11,6 +11,7 @@ jobs:
   build_node6:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
           node-version: '6.x'
@@ -20,6 +21,7 @@ jobs:
   build_node8:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
           node-version: '8.x'
@@ -29,6 +31,7 @@ jobs:
   build_node10:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
           node-version: '10.x'
@@ -38,6 +41,7 @@ jobs:
   build_node12:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
@@ -47,6 +51,7 @@ jobs:
   build_node14:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
@@ -56,6 +61,7 @@ jobs:
   build_node16:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2  
       - uses: actions/setup-node@v2
         with:
           node-version: '16.x'
