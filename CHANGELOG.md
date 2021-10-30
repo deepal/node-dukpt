@@ -1,5 +1,7 @@
 # Changelog
 
+### [4.0.1](https://github.com/dpjayasekara/node-dukpt/compare/v4.0.0...v4.0.1) (2021-10-30)
+
 ## [4.0.0](https://github.com/dpjayasekara/node-dukpt/compare/v3.0.0...v4.0.0) (2021-10-30)
 
 
