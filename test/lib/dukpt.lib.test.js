@@ -235,7 +235,7 @@ describe('dukpt decryption tests with hex input encoding and aes encryption mode
 describe('internal methods test suite', () => {
 
     beforeEach(() => {
-        sandbox = sinon.sandbox.create();
+        sandbox = sinon.createSandbox();
         dukpt = new Dukpt(bdk, ksn);
     });
 
@@ -245,7 +245,8 @@ describe('internal methods test suite', () => {
     });
 
     it('should generate dukpt session key provided ipek and ksn', (done) => {
-        const stub = sinon.stub(Dukpt, '_createDataKeyHex', () => '123');
+        const stub = sinon.stub(Dukpt, '_createDataKeyHex');
+        stub.returns('123')
 
         const dukptSessKey = Dukpt.generateDukptSessionKey(getRandomHexText(), getRandomHexText());
 
@@ -255,7 +256,8 @@ describe('internal methods test suite', () => {
     });
 
     it('should throw an error when either ipek or ksn is not provided for generateDukptSessionKey', (done) => {
-        const stub = sinon.stub(Dukpt, '_createDataKeyHex', () => '123' );
+        const stub = sinon.stub(Dukpt, '_createDataKeyHex')
+        stub.returns('123');
         try{
             Dukpt.generateDukptSessionKey('', getRandomHexText());
         }
