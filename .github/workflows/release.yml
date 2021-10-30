@@ -4,8 +4,17 @@ on:
     branches:
       - master
 jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+      - run: npm audit --audit-level=moderate
   build:
     runs-on: ubuntu-latest
+    needs: audit
     strategy:
       matrix:
         node: [12, 14, 16]
@@ -17,11 +26,3 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
-  audit:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-      - run: npm audit --audit-level=moderate
