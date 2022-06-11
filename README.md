@@ -12,7 +12,7 @@ Don't hesitate to report any bugs in the [Github Repository!](https://github.com
 
 ### Prerequisites
 
-* Node v10.0.0 or above
+* Node v12.0.0 or above
 
 ### Installing
 
