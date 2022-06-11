@@ -41,7 +41,7 @@ class DataOperations {
 
         const keyar = hex.match(/../g); // break into array of doublets
 
-        let s = '';  // holder for our return value
+        let s = ''; // holder for our return value
 
         for (let i = 0; i < keyar.length; i++) {
             s += String.fromCharCode(Number(`0x${keyar[i]}`));
@@ -56,7 +56,7 @@ class DataOperations {
 
         const keyar = hex.match(/../g); // break into array of doublets
 
-        const s = [];  // holder for our return value
+        const s = []; // holder for our return value
 
         for (let i = 0; i < keyar.length; i++) {
             s.push(Number(`0x${keyar[i]}`));
@@ -166,8 +166,8 @@ class DataOperations {
         for (let i = 0; i < symbols.length; i++) {
             const s = symbols[i];
             const sDecimal = Number(`0x${s}`);
-            output.push(isASCII(sDecimal) ?
-                String.fromCharCode(sDecimal) : SPECIAL);
+            output.push(isASCII(sDecimal)
+                ? String.fromCharCode(sDecimal) : SPECIAL);
         }
         return output.join('');
     }

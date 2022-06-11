@@ -15,8 +15,8 @@ class Dukpt {
         if (DataOperations.fieldEmpty([dBDK, dKSN])) {
             throw new Error('a field is blank');
         }
-        if (dBDK.replace(/\s/g, '').length !== 32 ||
-            dKSN.replace(/\s/g, '').length !== 20) {
+        if (dBDK.replace(/\s/g, '').length !== 32
+            || dKSN.replace(/\s/g, '').length !== 20) {
             throw new Error('BDK must be 16 bytes long and KSN must be 10 bytes');
         }
 
@@ -62,20 +62,24 @@ class Dukpt {
         // above step, expanded to 24 bytes per EDE3.
 
         // left half:
-        const left = Dukpt._des(Dukpt._EDE3KeyExpand(maskedPEK),
+        const left = Dukpt._des(
+            Dukpt._EDE3KeyExpand(maskedPEK),
             maskedPEK.substring(0, 8),
             true,
             CBC,
             iv,
-            null);
+            null
+        );
 
         // right half:
-        const right = Dukpt._des(Dukpt._EDE3KeyExpand(maskedPEK),
+        const right = Dukpt._des(
+            Dukpt._EDE3KeyExpand(maskedPEK),
             maskedPEK.substring(8),
             true,
             CBC,
             iv,
-            null);
+            null
+        );
 
         let sessionKey = left + right;
 
@@ -99,25 +103,23 @@ class Dukpt {
         const CBC = 1; // cipher block chaining enabled
         const iv = '\0\0\0\0\0\0\0\0'; // initial vector
 
-        try {
-            // convert to binary
-            const binaryKey = DataOperations.hexstringToData(key);
-            let binaryData = DataOperations.hexstringToData(data);
+        // convert to binary
+        const binaryKey = DataOperations.hexstringToData(key);
+        let binaryData = DataOperations.hexstringToData(data);
 
-            // data should be a multiple of 8 bytes
-            while (binaryData.length % 8) {
-                binaryData += '\0';
-            }
-
-            return Dukpt._des(binaryKey,
-                binaryData,
-                encryptTrueFalse,
-                CBC,
-                iv,
-                null);
-        } catch (e) {
-            throw e;
+        // data should be a multiple of 8 bytes
+        while (binaryData.length % 8) {
+            binaryData += '\0';
         }
+
+        return Dukpt._des(
+            binaryKey,
+            binaryData,
+            encryptTrueFalse,
+            CBC,
+            iv,
+            null
+        );
     }
 
     dukptEncrypt(dataToEncrypt, encryptOptions) {
@@ -130,14 +132,14 @@ class Dukpt {
             outputEncoding: 'hex'
         };
 
-        const options = Object.assign({}, _defaultOptions, encryptOptions);
+        const options = { ..._defaultOptions, ...encryptOptions };
 
         switch (options.inputEncoding.toLowerCase()) {
         case 'ascii':
             data = DataOperations.dataToHexstring(data);
             break;
         case 'hex':
-                // do nothing
+            // do nothing
             break;
         default:
             throw new Error(`unsupported input encoding type for dukpt encrypt : '${options.inputEncoding}'`);
@@ -171,7 +173,7 @@ class Dukpt {
             encryptedOutput = DataOperations.dataToHexstring(encryptedOutput);
             break;
         case 'ascii':
-                // do nothing
+            // do nothing
             break;
         default:
             throw new Error(`unsupported output encoding type for dukpt decrypt : '${options.outputEncoding}'`);
@@ -191,7 +193,7 @@ class Dukpt {
             outputEncoding: 'ascii'
         };
 
-        const options = Object.assign({}, _defaultOptions, decryptOptions);
+        const options = { ..._defaultOptions, ...decryptOptions };
 
         let key = this._sessionKey.replace(/\s/g, ''); // remove spaces
 
@@ -222,7 +224,7 @@ class Dukpt {
 
         switch (options.outputEncoding.toLowerCase()) {
         case 'ascii':
-                // do nothing
+            // do nothing
             break;
         case 'hex':
             decryptedOutput = DataOperations.dataToHexstring(decryptedOutput);
@@ -253,12 +255,14 @@ class Dukpt {
         maskedKSN = maskedKSN.substring(0, 8); // take 1st 8 bytes only
 
         // get LEFT half of IPEK
-        let cipher = Dukpt._des(key,
+        let cipher = Dukpt._des(
+            key,
             maskedKSN,
             true, /* encrypt */
             CBC,
             iv,
-            null);
+            null
+        );
 
         let IPEK = DataOperations.dataToHexstring(cipher);
 
@@ -266,12 +270,14 @@ class Dukpt {
         const mask = 'C0C0C0C000000000C0C0C0C000000000';
         key = DataOperations.XORdata(DataOperations.hexstringToData(mask), DataOperations.hexstringToData(bdk));
         key = Dukpt._EDE3KeyExpand(key);
-        cipher = Dukpt._des(key,
+        cipher = Dukpt._des(
+            key,
             maskedKSN,
             true, /* encrypt */
             CBC,
             iv,
-            null);
+            null
+        );
 
         // join the new cipher to the end of the IPEK:
         IPEK += DataOperations.dataToHexstring(cipher);
@@ -281,9 +287,9 @@ class Dukpt {
 
     static _getCounter(ksn) {
         const tailbytes = ksn.substring(ksn.length - 3);
-        const integerValue = (tailbytes.charCodeAt(0) << 16) +
-            (tailbytes.charCodeAt(1) << 8) +
-            tailbytes.charCodeAt(2);
+        const integerValue = (tailbytes.charCodeAt(0) << 16)
+            + (tailbytes.charCodeAt(1) << 8)
+            + tailbytes.charCodeAt(2);
         return integerValue & 0x1FFFFF;
     }
 
@@ -341,12 +347,14 @@ class Dukpt {
         const bottom8xorKSN = DataOperations.XORdata(bottom8, reg);
 
         // This will be single-DES because of the 8-byte key:
-        const desEncrypted = Dukpt._des(top8,
+        const desEncrypted = Dukpt._des(
+            top8,
             bottom8xorKSN,
             true, /* encrypt */
             CBC,
             iv,
-            null);
+            null
+        );
 
         return DataOperations.XORdata(bottom8, desEncrypted);
     }
@@ -725,7 +733,7 @@ class Dukpt {
             throw new Error('Key must be 16 bytes for AES.');
         }
 
-        while (dataArray.length % 16) { dataArray.push(0); }  // pad with zeroes
+        while (dataArray.length % 16) { dataArray.push(0); } // pad with zeroes
 
         // The initialization vector, which can be null
         const iv = null;
@@ -761,7 +769,7 @@ class Dukpt {
 
         while (dataArray.length % 16) {
             dataArray.push(0);
-        }  // pad with zeroes
+        } // pad with zeroes
 
         // The initialization vector, which can be null
         const iv = null;
