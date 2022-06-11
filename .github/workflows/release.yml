@@ -16,13 +16,13 @@ jobs:
           node-version: 16.x
       - name: Set up Node.js runtime
         run: npm audit --production
-  build:
+  test:
     name: Build on supported Node.js versions
     runs-on: ubuntu-latest
     needs: audit
     strategy:
       matrix:
-        node: [12, 14, 16]
+        node: [10, 12, 14, 16, 18]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -32,12 +32,10 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Run Test
         run: npm ci && npm test
-      - name: Build
-        run: npm run build
   release:
     name: Release
     runs-on: ubuntu-latest
-    needs: build
+    needs: test
     steps:
       - name: Checkout
         uses: actions/checkout@v2

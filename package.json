@@ -2,16 +2,15 @@
   "name": "dukpt",
   "version": "4.0.2",
   "description": "Node JS Library for Derived Unique Key Per Transaction (DUKPT) Encryption",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "nyc --reporter=text-summary --reporter=cobertura --reporter=lcov node_modules/.bin/mocha test/**/*.js",
-    "build": "npm run test && babel ./src --out-dir ./dist",
     "release": "semantic-release",
     "release:dryrun": "semantic-release --dry-run",
     "lint": "eslint ."
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=10.0.0"
   },
   "repository": {
     "type": "git",
@@ -103,34 +102,13 @@
     "security",
     "payments"
   ],
-  "author": "Deepal Jayasekara <dpjayasekara@gmail.com> (https://jsblog.insiderattack.net)",
+  "author": "Deepal Jayasekara <dpjayasekara@gmail.com> (https://blog.insiderattack.net)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dpjayasekara/node-dukpt/issues"
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": "4.9.1"
-          },
-          "modules": "commonjs",
-          "useBuiltIns": false,
-          "debug": true
-        }
-      ]
-    ],
-    "sourceMaps": true,
-    "retainLines": true,
-    "plugins": []
-  },
   "homepage": "https://github.com/dpjayasekara/node-dukpt#readme",
   "devDependencies": {
-    "@babel/cli": "7.16.0",
-    "@babel/core": "7.16.0",
-    "@babel/preset-env": "7.16.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "conventional-changelog-conventionalcommits": "^4.6.1",

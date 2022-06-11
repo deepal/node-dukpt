@@ -10,6 +10,10 @@ This the NodeJS implementation of DUKPT based on the vanilla javascript implemen
 
 Don't hesitate to report any bugs in the [Github Repository!](https://github.com/dpjayasekara/node-dukpt). Many thanks to @jamiesoncj for providing resources.
 
+### Prerequisites
+
+* Node v10.0.0 or above
+
 ### Installing
 
 ```
@@ -149,6 +153,6 @@ npm run test
 #### Roadmap
 
 - [x] Support for DUKPT Encryption/Decryption with 3DES
-- [x] Support for DUKPT Encryption/Decryption with AES (Node v6.x.x and above only)
+- [x] Support for DUKPT Encryption/Decryption with AES
 
 
