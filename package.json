@@ -124,6 +124,6 @@
     "sinon": "11.1.2"
   },
   "dependencies": {
-    "aes-js": "2.1.0"
+    "aes-js": "2.1.1"
   }
 }
